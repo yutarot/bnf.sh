@@ -7,7 +7,6 @@
 	<meta name="description" content="yutarot's personal URL shortener">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<link rel="apple-touch-icon" href="icon.png">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 	<style>
 		body {
@@ -16,17 +15,41 @@
 		}
 		h1 {
 			font-size: 10em;
+			letter-spacing: -0.13em;
+			line-height: 0.66em;
+		}
+		#siteName {
+			display: inline-block;
+			word-break: break-word;
+		}
+		footer a {
+			text-decoration: none;
 		}
 	</style>
 </head>
 <body>
 
 <main>
-	<h1 href="https://github.com/yutarot/bnf.sh">bnf.sh</h1>
+	<h1 href="https://github.com/yutarot/bnf.sh"><div id="siteName">bnf<br>.sh</div></h1>
 </main>
-<aside>
+<footer>
 	<a href="https://github.com/yutarot/bnf.sh">github</a>
-</aside>
+</footer>
+<script>
+    let siteName = document.querySelector('#siteName');
+    let isFirstClick = true;
+    siteName.addEventListener('click', function (event) {
+        let r = Math.floor(Math.random() * 255);
+        let g = Math.floor(Math.random() * 255);
+        let b = Math.floor(Math.random() * 255);
+        let color = `rgb(${r},${g},${b})`;
+        document.body.style.color = color;
+        if (isFirstClick) {
+            isFirstClick = false;
+            document.body.style.backgroundColor = '#0f0f0f';
+        }
+    })
+</script>
 </body>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-82631162-5"></script>
@@ -37,5 +60,4 @@
 
     gtag('config', 'UA-82631162-5');
 </script>
-
 </html>
