@@ -13,15 +13,18 @@
 			text-align: center;
 			font-family: monospace;
 		}
+
 		h1 {
 			font-size: 10em;
 			letter-spacing: -0.13em;
 			line-height: 0.66em;
 		}
+
 		#siteName {
 			display: inline-block;
 			word-break: break-word;
 		}
+
 		footer a {
 			text-decoration: none;
 		}
@@ -30,7 +33,12 @@
 <body>
 
 <main>
-	<h1><div id="siteName">bnf<br>.sh</div></h1>
+	<h1>
+		<div id="siteName">
+			<div>bnf</div>
+			<div>.sh</div>
+		</div>
+	</h1>
 </main>
 <footer>
 	<a href="https://github.com/yutarot/bnf.sh">github</a>
@@ -55,7 +63,11 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-82631162-5"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
     gtag('js', new Date());
 
     gtag('config', 'UA-82631162-5');
