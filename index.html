@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 	<style>
 		body {
+			transition: 2s;
 			text-align: center;
 			font-family: monospace;
 		}
@@ -21,6 +22,7 @@
 		}
 
 		#siteName {
+			user-select: none;
 			cursor: pointer;
 			display: inline-block;
 			word-break: break-word;
@@ -45,19 +47,37 @@
 	<a href="https://github.com/yutarot/bnf.sh">github</a>
 </footer>
 <script>
-    let siteName = document.querySelector('#siteName');
-    let isFirstClick = true;
-    siteName.addEventListener('click', function (event) {
-        let r = Math.floor(Math.random() * 255);
-        let g = Math.floor(Math.random() * 255);
-        let b = Math.floor(Math.random() * 255);
-        let color = `rgb(${r},${g},${b})`;
-        document.body.style.color = color;
-        if (isFirstClick) {
-            isFirstClick = false;
-            document.body.style.backgroundColor = '#222';
-        }
-    })
+  let siteName = document.querySelector('#siteName');
+  let isFirstClick = true;
+
+  function sleep() {
+    return function(func) {
+      setTimeout(function() {
+        console.log(isFirstClick);
+        func();
+      }, 2000);
+    }
+  }
+
+  function changeColor () {
+    let r = Math.floor(Math.random() * 255);
+    let g = Math.floor(Math.random() * 255);
+    let b = Math.floor(Math.random() * 255);
+    let color = `rgb(${r},${g},${b})`;
+    document.body.style.color = color;
+    if (isFirstClick) {
+      isFirstClick = false;
+      document.body.style.backgroundColor = '#222';
+    }
+    sleep()(function(){
+      changeColor();
+    });
+  }
+
+  siteName.addEventListener('click', function (event) {
+    siteName.style.pointerEvents = 'none';
+    changeColor();
+  })
 </script>
 </body>
 <!-- Global site tag (gtag.js) - Google Analytics -->
